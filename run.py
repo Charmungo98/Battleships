@@ -35,12 +35,16 @@ def print_board(board, reveal=False):
 
 def get_move():
     #Get the player's move
-    try:
-        x, y = map(int, input("Enter coordinates (x y): ").split())
-        return x, y
-    except ValueError:
-        print("Invalid input. Please enter two integers.")
-        return get_move()
+    while True:
+        try:
+            x, y = map(int, input("Enter coordinates (x y): ").split())
+            if (x, y) in player_moves
+                print("You have already chosen these coordinates. Please try again.")
+                continue
+            return x, y
+        except ValueError:
+            print("Invalid input. Please enter two integers.")
+        
 
 
 def make_move(board, tracking_board, x, y):
@@ -83,10 +87,12 @@ def play_battleship(size=6, ships=4):
     print("Welcome to Battleship!")
     print("Your board:")
     print_board(player_board, reveal=True)
+    player_moves = set()
 
     while True:
         print("\nYour turn!")
-        x, y = get_move()
+        player_moves.add((x, y))
+        x, y = get_move(player_moves)
         if make_move(computer_board, player_tracking_board, x, y):
             if has_won(computer_board):
                 print("You won!")
