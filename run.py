@@ -98,7 +98,7 @@ def play_battleship(size=6, ships=4):
 
         if make_move(computer_board, player_tracking_board, x, y):
             if has_won(computer_board):
-                print("You won!")
+                print("Congratulations. You win!")
                 break
         
         print("\nComputer's turn.")
@@ -111,7 +111,7 @@ def play_battleship(size=6, ships=4):
         
         print("\nYour board:")
         print_board(player_board)
-        print("\nOpponents tracking board:")
+        print("\nOpponents board:")
         print_board(player_tracking_board)
 
 
