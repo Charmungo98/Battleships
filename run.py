@@ -13,7 +13,7 @@ def place_ships(board, ships):
             if board[x][y] == "O":
                 board[x][y] = "S"
                 ship_placed = True
-                
+
 def print_board(board, reveal=False):
     #Print the game board.#
     for row in board:
@@ -38,3 +38,7 @@ def make_move(board, x, y):
         print("Miss!")
         board[x][y] = "M"
         return False
+
+def has_won(board):
+    """Check if all ships have been hit."""
+    return all(cell != "S" for row in board for cell in row)
