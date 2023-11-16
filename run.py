@@ -33,15 +33,17 @@ def print_board(board, reveal=False):
         print(" ".join(row if reveal else ["S" if cell == "S" else cell for cell in row]))
 
 
-def get_move(player_moves):
+def get_move(player_moves, board_size):
     #Get the player's move
     while True:
         try:
             x, y = map(int, input("Enter coordinates (x y): ").split())
             if (x, y) in player_moves:
                 print("You have already chosen these coordinates. Please try again.")
-            else:
+            elif 0 <= x < board_size and 0 <= y < board_size:
                 return x, y
+            else:
+                print(f"Invalid coordinates. Please choose coordiantes between 0 and 5")
         except ValueError:
             print("Invalid input. Please enter two integers.")
         
