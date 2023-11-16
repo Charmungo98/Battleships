@@ -33,15 +33,15 @@ def print_board(board, reveal=False):
         print(" ".join(row if reveal else ["S" if cell == "S" else cell for cell in row]))
 
 
-def get_move():
+def get_move(player_moves):
     #Get the player's move
     while True:
         try:
             x, y = map(int, input("Enter coordinates (x y): ").split())
-            if (x, y) in player_moves
+            if (x, y) in player_moves:
                 print("You have already chosen these coordinates. Please try again.")
-                continue
-            return x, y
+            else:
+                return x, y
         except ValueError:
             print("Invalid input. Please enter two integers.")
         
@@ -83,16 +83,17 @@ def play_battleship(size=6, ships=4):
     player_tracking_board = init_board(size)
     place_ships(player_board, ships)
     place_ships(computer_board, ships)
+    player_moves = set()
 
     print("Welcome to Battleship!")
     print("Your board:")
     print_board(player_board, reveal=True)
-    player_moves = set()
 
     while True:
         print("\nYour turn!")
-        player_moves.add((x, y))
         x, y = get_move(player_moves)
+        player_moves.add((x, y))
+
         if make_move(computer_board, player_tracking_board, x, y):
             if has_won(computer_board):
                 print("You won!")
@@ -108,7 +109,7 @@ def play_battleship(size=6, ships=4):
         
         print("\nYour board:")
         print_board(player_board)
-        print("\nYour tracking board (Hits and Misses on opponent's board):")
+        print("\nOpponents tracking board:")
         print_board(player_tracking_board)
 
 
