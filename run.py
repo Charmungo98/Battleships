@@ -40,5 +40,12 @@ def make_move(board, x, y):
         return False
 
 def has_won(board):
-    """Check if all ships have been hit."""
+    #Check if all ships have been hit.#
     return all(cell != "S" for row in board for cell in row)
+
+def computer_move(board):
+    #Computer makes a random move.#
+    x, y = random.randint(0, len(board) - 1), random.randint(0, len(board) - 1)
+    while board[x][y] in ["H", "M"]:
+        x, y = random.randint(0, len(board) - 1), random.randint(0, len(board) - 1)
+    return x, y
