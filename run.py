@@ -87,3 +87,5 @@ def play_battleship(size=10, ships=5):
         
         print("\nYour board:")
         print_board(player_board)
+
+play_battleship()
