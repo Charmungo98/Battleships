@@ -64,3 +64,26 @@ def play_battleship(size=10, ships=5):
     computer_board = init_board(size)
     place_ships(player_board, ships)
     place_ships(computer_board, ships)
+
+    print("Welcome to Battleship!")
+    print("Your board:")
+    print_board(player_board, reveal=True)
+
+    while True:
+        print("\nYour turn!")
+        x, y = get_move()
+        if make_move(computer_board, x, y):
+            if has_won(computer_board):
+                print("You won!")
+                break
+        
+        print("\nComputer's turn.")
+        cx, cy = computer_move(player_board)
+        print(f"Computer chose: {cx} {cy}")
+        make_move(player_board, cx, cy)
+        if has_won(player_board):
+            print("Computer won!")
+            break
+        
+        print("\nYour board:")
+        print_board(player_board)
