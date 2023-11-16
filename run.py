@@ -1,4 +1,4 @@
-from random import randint
+from random import randint, choice
 
 
 def init_board(size):
@@ -11,16 +11,26 @@ def place_ships(board, ships):
     for _ in range(ships):
         ship_placed = False
         while not ship_placed:
+            orientation = choice(['horizontal', 'vertical'])
             x, y = randint(0, len(board) - 1), randint(0, len(board) - 1)
-            if board[x][y] == "O":
-                board[x][y] = "S"
-                ship_placed = True
+
+            if orientation == 'horizontal':
+                if y < len(board) - 1 and board[x][y] == "O" and board[x][y + 1] == "O":
+                    board[x][y] = "S"
+                    board[x][y + 1] = "S"
+                    ship_placed = True
+            
+            else:  # vertical
+                if x < len(board) - 1 and board[x][y] == "O" and board[x + 1][y] == "O":
+                    board[x][y] = "S"
+                    board[x + 1][y] = "S"
+                    ship_placed = True
 
 
 def print_board(board, reveal=False):
     #Print the game board
     for row in board:
-        print(" ".join(row if reveal else ["X" if cell == "S" else cell for cell in row]))
+        print(" ".join(row if reveal else ["S" if cell == "S" else cell for cell in row]))
 
 
 def get_move():
@@ -37,15 +47,15 @@ def make_move(board, tracking_board, x, y):
     #Make a move on the board
     if board[x][y] == "S":
         print("Hit!")
-        board[x][y] = "H"
+        board[x][y] = "X"
         if tracking_board is not None:
-            tracking_board[x][y] = "H"
+            tracking_board[x][y] = "X"
         return True
     else:
         print("Miss!")
-        board[x][y] = "M"
+        board[x][y] = "-"
         if tracking_board is not None:
-            tracking_board[x][y] = "M"
+            tracking_board[x][y] = "-"
         return False
 
 
@@ -57,12 +67,12 @@ def has_won(board):
 def computer_move(board):
     #Computer makes a random move
     x, y = randint(0, len(board) - 1), randint(0, len(board) - 1)
-    while board[x][y] in ["H", "M"]:
+    while board[x][y] in ["X", "-"]:
         x, y = randint(0, len(board) - 1), randint(0, len(board) - 1)
     return x, y
 
 
-def play_battleship(size=7, ships=5):
+def play_battleship(size=6, ships=4):
     #Play the Battleship game
     player_board = init_board(size)
     computer_board = init_board(size)
