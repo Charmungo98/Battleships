@@ -93,7 +93,7 @@ def play_battleship(size=6, ships=4):
 
     while True:
         print("\nYour turn!")
-        x, y = get_move(player_moves)
+        x, y = get_move(player_moves, size)
         player_moves.add((x, y))
 
         if make_move(computer_board, player_tracking_board, x, y):
