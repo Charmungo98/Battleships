@@ -33,15 +33,19 @@ def get_move():
         return get_move()
 
 
-def make_move(board, x, y):
+def make_move(board, tracking_board, x, y):
     #Make a move on the board
     if board[x][y] == "S":
         print("Hit!")
         board[x][y] = "H"
+        if tracking_board is not None:
+            tracking_board[x][y] = "H"
         return True
     else:
         print("Miss!")
         board[x][y] = "M"
+        if tracking_board is not None:
+            tracking_board[x][y] = "M"
         return False
 
 
@@ -58,10 +62,11 @@ def computer_move(board):
     return x, y
 
 
-def play_battleship(size=10, ships=5):
+def play_battleship(size=7, ships=5):
     #Play the Battleship game
     player_board = init_board(size)
     computer_board = init_board(size)
+    player_tracking_board = init_board(size)
     place_ships(player_board, ships)
     place_ships(computer_board, ships)
 
@@ -72,7 +77,7 @@ def play_battleship(size=10, ships=5):
     while True:
         print("\nYour turn!")
         x, y = get_move()
-        if make_move(computer_board, x, y):
+        if make_move(computer_board, player_tracking_board, x, y):
             if has_won(computer_board):
                 print("You won!")
                 break
@@ -80,12 +85,15 @@ def play_battleship(size=10, ships=5):
         print("\nComputer's turn.")
         cx, cy = computer_move(player_board)
         print(f"Computer chose: {cx} {cy}")
-        make_move(player_board, cx, cy)
+        make_move(player_board, None, cx, cy)
         if has_won(player_board):
             print("Computer won!")
             break
         
         print("\nYour board:")
         print_board(player_board)
+        print("\nYour tracking board (Hits and Misses on opponent's board):")
+        print_board(player_tracking_board)
+
 
 play_battleship()
