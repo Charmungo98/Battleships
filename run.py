@@ -27,3 +27,14 @@ def get_move():
     except ValueError:
         print("Invalid input. Please enter two integers.")
         return get_move()
+
+def make_move(board, x, y):
+    #Make a move on the board.#
+    if board[x][y] == "S":
+        print("Hit!")
+        board[x][y] = "H"
+        return True
+    else:
+        print("Miss!")
+        board[x][y] = "M"
+        return False
