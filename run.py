@@ -19,3 +19,11 @@ def print_board(board, reveal=False):
     for row in board:
         print(" ".join(row if reveal else ["X" if cell == "S" else cell for cell in row]))
 
+def get_move():
+    #Get the player's move.#
+    try:
+        x, y = map(int, input("Enter coordinates (x y): ").split())
+        return x, y
+    except ValueError:
+        print("Invalid input. Please enter two integers.")
+        return get_move()
