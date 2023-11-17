@@ -187,6 +187,8 @@ def play_battleship(size=6, ships=4):
 
         # Check if player has won
         if has_won(computer_board):
+            print("\nYour final hit:")
+            print_board(player_tracking_board)
             print("Congratulations, {}! You win!".format(player_name))
             break
 
