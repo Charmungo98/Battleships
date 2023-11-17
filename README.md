@@ -6,6 +6,9 @@
 
 Visit the deployed website [here](https://battleship-python98-c71c6949cf34.herokuapp.com/).
 
+![overall](https://github.com/Charmungo98/Battleships/assets/138699715/917f1a8e-ad2d-413d-b68c-1fd55f3986d9)
+
+
 # 1. How to play
 
 ### Game Setup
@@ -125,3 +128,56 @@ Visit the deployed website [here](https://battleship-python98-c71c6949cf34.herok
 ### User Interface
   - Interactions are handled through the console with printed messages and input prompts.
   - The GameBoard class provides a method to display the board state in a user-friendly format.
+
+# 4. Testing
+
+  #### I have manually tested this project by doing the following;
+  - Passed the code through a PEP8 linter (flake8) and confirmed there are no issues with the code.
+  - Provided invalid inputs such as; out of bound coordinates, strings where intergers where expected, same input twice - no issues occured.
+  - Tested the game thoroughly in hte local terminal and Code Institute Heroku terminal
+
+### Bugs Encountered and Resolutions
+
+  #### Overview
+  - During the development and refinement of the Battleship game, several bugs and issues were identified and subsequently resolved. This process was crucial in ensuring a smooth, user-friendly, and reliable gaming experience. Below are some of the key issues encountered and the strategies employed to fix them.
+
+  #### Coordiante System Confusion 
+  - Issue: Initially, the game used a 0-based indexing system for coordinates, which was not intuitive for most players.
+  - Resolution: The coordinate system was shifted to a 1-based indexing system. The get_move function was modified to subtract 1 from the player's input, aligning the user interface with a more natural coordinate system starting from 1.
+
+  #### Board Boundarys Checks for Ship Placement
+  - Issue: There was a potential for ships to overflow the board's boundaries when being placed randomly.
+  - Resolution: The ship placement logic in the place_ships function was adjusted to ensure that the ships, when placed either horizontally or vertically, would not exceed the board's limits. This was achieved by adding boundary checks before placing each ship.
+
+  #### Duplicate Move Attempts
+  - Issue: Players were able to enter the same coordinates for multiple moves, which was not in line with the game's rules.
+  - Resolution: A set named player_moves was introduced to track all previously made moves. The game logic was updated to check this set before accepting a move, ensuring that each set of coordinates could only be used once.
+
+  #### PEP 8 Compliance
+  - Issue: The initial versions of the code did not fully adhere to PEP 8 standards, which are essential for Python code readability and maintainability.
+  - Resolution: The code was thoroughly reviewed and modified to comply with PEP 8 guidelines. Tools such as flake8 were used to identify and rectify style violations, including line length, string formatting, and whitespace usage.
+
+  #### String Formatting Errors
+  - Issue: There were instances of incorrect string formatting, such as unused arguments in format() and missing placeholders in f-strings.
+  - Resolution: Each instance of string formatting was carefully examined. F-strings were corrected to include the necessary placeholders, and the 'format' method was either fixed to include placeholders in the strings or removed where unnecessary.
+
+  #### Conclusion 
+  - The process of identifying and resolving these issues was instrumental in enhancing the game's functionality and user experience. It also served as a valuable learning experience in Python programming, debugging, and code optimization.
+
+### Remaining Bugs
+  - No bugs are remaining.
+
+### Validator Testing
+  - PEP 8, no errors were found by flake8.
+
+# 5. Deployment 
+  - This project was deployed using Code Institutes mock terminal for Heroku. The steps for deployment are as follows;
+  - Fork or clone this repository
+  - Create a new Heroku app
+  - Set the buildbacks for Python and NodeJs in that order
+  - Link the Heroku app to the repository
+  - Click on Deploy
+
+# 6. Credits
+  - Code institure for the deployment terminal
+  - My friends, for keeping me sane when trying to wrap my head around this interesting unit. 
