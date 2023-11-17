@@ -14,14 +14,14 @@ def place_ships(board, ships):
             orientation = choice(['horizontal', 'vertical'])
             x, y = randint(0, len(board) - 1), randint(0, len(board) - 1)
 
-            if orientation == 'horizontal':
-                if y < len(board) - 1 and board[x][y] == "O" and board[x][y + 1] == "O":
+            if orientation == 'horizontal' and y < len(board)-2:
+                if board[x][y] == "O" and board[x][y + 1] == "O":
                     board[x][y] = "S"
                     board[x][y + 1] = "S"
                     ship_placed = True
             
-            else:  # vertical
-                if x < len(board) - 1 and board[x][y] == "O" and board[x + 1][y] == "O":
+            elif orientation == 'vertical' and x < len(board) - 2:
+                if board[x][y] == "O" and board[x + 1][y] == "O":
                     board[x][y] = "S"
                     board[x + 1][y] = "S"
                     ship_placed = True
