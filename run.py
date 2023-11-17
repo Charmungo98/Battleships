@@ -30,7 +30,10 @@ def place_ships(board, ships):
 def print_board(board, reveal=False):
     #Print the game board
     for row in board:
-        print(" ".join(row if reveal else ["S" if cell == "S" else cell for cell in row]))
+        if reveal: 
+            print(" ".join(row))
+        else: 
+            print(" ".join(["X" if cell == "X" else cell for cell in row]))
 
 
 def get_move(player_moves, board_size):
