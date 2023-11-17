@@ -88,8 +88,13 @@ def play_battleship(size=6, ships=4):
     player_moves = set()
 
     print("Welcome to Battleship!")
+    print("Board size: 6. Ships: 4.")
+    print("Ships are 2 co-ordinates long.")
+    print("Co-ordinates start at 1 on both x and y axis")
+    print("Hit all of your opponents boats to win the game.")
     print("Your board:")
     print_board(player_board, reveal=True)
+    print("\n" + "-" * 20 + "\n")
 
     while True:
         print("\nYour turn!")
@@ -101,6 +106,7 @@ def play_battleship(size=6, ships=4):
                 print("Congratulations. You win!")
                 break
         
+        print("\n" + "-" * 20 + "\n")
         print("\nComputer's turn.")
         cx, cy = computer_move(player_board)
         print(f"Computer chose: {cx} {cy}")
@@ -109,10 +115,12 @@ def play_battleship(size=6, ships=4):
             print("Computer won!")
             break
         
+        print("\n" + "-" * 20 + "\n")
         print("\nYour board:")
         print_board(player_board)
         print("\nOpponents board:")
         print_board(player_tracking_board)
+        print("\n" + "-" * 20 + "\n")
 
 
 play_battleship()
