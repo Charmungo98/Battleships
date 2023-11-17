@@ -40,8 +40,9 @@ def get_move(player_moves, board_size):
     #Get the player's move
     while True:
         try:
-            x, y = map(int, input("Enter coordinates (x y): ").split())
-            x, y = x - 1, y - 1
+            x = int(input("Enter row coordinate (1 to {}): ".format(board_size))) - 1
+            y = int(input("Enter column coordinate (1 to {}): ".format(board_size))) - 1
+
             if not (0 <= x < board_size and 0 <= y < board_size):
                 print(f"Invalid coordiantes. Please choose coordinates between 1 and {board_size}.")
             elif (x, y) in player_moves:
@@ -95,7 +96,7 @@ def play_battleship(size=6, ships=4):
     print("Welcome to Battleship!")
     print("Board size: 6. Ships: 4.")
     print("Ships are 2 co-ordinates long.")
-    print("Co-ordinates start at 1 on both x and y axis")
+    print("Co-ordinates start at 1 on both axis at top left corner.")
     print("Hit all of your opponents boats to win the game.")
     print("\n" + "-" * 20 + "\n")
     print("Your board:")
