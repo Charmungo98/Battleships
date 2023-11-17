@@ -3,7 +3,7 @@ from random import randint, choice
 
 def init_board(size):
     #Initialize the game board
-    return [["O"] * size for _ in range(size)]
+    return [["."] * size for _ in range(size)]
 
 
 def place_ships(board, ships):
@@ -15,13 +15,13 @@ def place_ships(board, ships):
             x, y = randint(0, len(board) - 1), randint(0, len(board) - 1)
 
             if orientation == 'horizontal' and y < len(board)-2:
-                if board[x][y] == "O" and board[x][y + 1] == "O":
+                if board[x][y] == "." and board[x][y + 1] == ".":
                     board[x][y] = "S"
                     board[x][y + 1] = "S"
                     ship_placed = True
             
             elif orientation == 'vertical' and x < len(board) - 2:
-                if board[x][y] == "O" and board[x + 1][y] == "O":
+                if board[x][y] == "." and board[x + 1][y] == ".":
                     board[x][y] = "S"
                     board[x + 1][y] = "S"
                     ship_placed = True
@@ -44,30 +44,34 @@ def get_move(player_moves, board_size):
             y = int(input("Enter column coordinate (1 to {}): ".format(board_size))) - 1
 
             if not (0 <= x < board_size and 0 <= y < board_size):
-                print(f"Invalid coordiantes. Please choose coordinates between 1 and {board_size}.")
+                print(f"Invalid coordiantes.")
+                print("Please choose coordinates between 1 and 6.")
             elif (x, y) in player_moves:
-                print("You have already chosen these coordinates. Please try again.")
+                print("Coordinates previously chosen, please try again.")
             else:
                 return x, y
         except ValueError:
-            print("Invalid input. Please enter two integers.")
+            print("Invalid input. Please enter an integer.")
         
 
 
-def make_move(board, tracking_board, x, y):
+def make_move(board, tracking_board, x, y, player_moves):
     #Make a move on the board
-    if board[x][y] == "S":
+    if (x, y) in player_moves:
+        print("You've already hit this spot!")
+        return "repeat"
+    elif board[x][y] == "S":
         print("Hit!")
         board[x][y] = "X"
         if tracking_board is not None:
             tracking_board[x][y] = "X"
-        return True
+        return "hit"
     else:
         print("Miss!")
         board[x][y] = "-"
         if tracking_board is not None:
             tracking_board[x][y] = "-"
-        return False
+        return "miss"
 
 
 def has_won(board):
@@ -90,7 +94,9 @@ def play_battleship(size=6, ships=4):
     player_tracking_board = init_board(size)
     place_ships(player_board, ships)
     place_ships(computer_board, ships)
+
     player_moves = set()
+    player_score, computer_score = 0, 0
 
     print("\n" + "-" * 20 + "\n")
     print("Welcome to Battleship!")
@@ -106,22 +112,28 @@ def play_battleship(size=6, ships=4):
     while True:
         print("\nYour turn!")
         x, y = get_move(player_moves, size)
+        move_result = make_move(computer_board, player_tracking_board, x, y, player_moves)
+        if move_result == "hit":
+            player_score += 1
         player_moves.add((x, y))
 
-        if make_move(computer_board, player_tracking_board, x, y):
-            if has_won(computer_board):
-                print("Congratulations. You win!")
-                break
-        
+        if has_won(computer_board):
+            print("Congratulations. You win!")
+            break
+
         print("\n" + "-" * 20 + "\n")
         print("\nComputer's turn.")
         cx, cy = computer_move(player_board)
-        print(f"Computer chose: {cx} {cy}")
-        make_move(player_board, None, cx, cy)
+        print(f"Computer chose: {cx + 1} {cy + 1}")
+        computer_move_result = make_move(player_board, None, cx, cy, set())
+        if computer_move_result == "hit":
+            computer_score += 1
+
         if has_won(player_board):
             print("Computer won!")
             break
         
+        print("\nScores: Player - {}, Computer - {}".format(player_score, computer_score))
         print("\n" + "-" * 20 + "\n")
         print("\nYour board:")
         print_board(player_board)
