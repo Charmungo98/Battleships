@@ -46,8 +46,82 @@ Visit the deployed website [here](https://battleship-python98-c71c6949cf34.herok
 
 ### Existing Feature
 
+#### User entry
+  - Accepts user input for both coordinates.
+  - Before the game begins players are prompted to enter their name, the game cannot start till a name or username is provided.
+  - Once a name is provided, the game will address the user as the name provided.
+
+![name-input](https://github.com/Charmungo98/Battleships/assets/138699715/1bddc89a-69cb-45df-9b7d-e219aa6e904e)
+
+#### Random generation 
+  - Ships locations are randomly generated for both the player and the cpu.
+  - Player cannot see where ships of cpu are located until they are hit.
+  - CPU coordinares are random. 
+
 #### Interactive coordinate input with validation to prevent out-of-bound guesses.
   - You cannot enter coordinates that are outside of the scope of the board.
   - Only intergers can be entered as coordinate answers
-  - The sae coordinates cannot be entered twice, if a player enters the same coordinates twice, the game will provide them with another attempt to provide new coordinates. 
+  - The same coordinates cannot be entered twice, the game will provide them with another attempt to provide new coordinates.
+
 ![wrong-input](https://github.com/Charmungo98/Battleships/assets/138699715/2cd3b56e-911e-4c6f-897a-1e70147a6b59)
+
+#### Score tracking
+  - Score of both user and cpu is tracked and displayed after each round.
+  - Upon succession of hitting all opponents ships, a winner is declared.
+
+![score](https://github.com/Charmungo98/Battleships/assets/138699715/974878c6-dad3-49f4-8abc-b29b33aefec7)
+![winner](https://github.com/Charmungo98/Battleships/assets/138699715/3cf3824c-63a6-46f9-b2b3-5f8161d7c458)
+
+#### Simple and user-friendly console-based interface. 
+
+### Future Features
+  - The user will be able to select the size of the board they wish to use.
+  - The user will be able to select the number of ships used on each board and the length of the ships.
+  - The user will be able to choose the location of their own ships.
+  - The CPU will be able to recognise pattern and use strategic thought to calculate its coordinates. 
+
+
+# 3. Data Model 
+
+### Overview
+  - The Battleship game is designed with an object-oriented approach, focusing on classes and methods to manage game state and logic.
+  - The main components are the game board, ships, and player interactions, encapsulated within classes and manipulated via class methods.
+
+### Classes and Their Responsibilities
+#### GameBoard Class: Represents the game board.
+  - Each instance of this class represents a 6x6 grid.
+  - Methods include initializing the board, placing ships, and displaying the board.
+
+#### Ship Class: Represents the ships on the board.
+  - Responsible for ship attributes such as size, orientation, and coordinates.
+  - Methods include placing the ship on the board and checking if a ship is hit.
+  - 
+#### Player Class: Represents each player in the game.
+  - Stores information like player's name, their board, and their moves.
+  - Methods include making a move, tracking hits and misses, and checking for win conditions.
+  - 
+### Game Board Representation
+  - Implemented using a 2D array (lists of lists in Python), where each element corresponds to a cell on the game board.
+  - Cell states include "O" (empty water), "S" (part of a ship), "X" (a hit on a ship), and "-" (a missed shot).
+
+### Ship Placement
+  - Handled by the Ship class, which randomly places ships on the board with consideration for orientation and avoiding overlaps.
+  - The placement method ensures that ships stay within the board's boundaries and do not intersect.
+
+### Player Moves and Score Tracking
+  - Managed by the Player class.
+  - Player moves are stored in a set to efficiently track all previous attempts and prevent duplicates.
+  - Scores are updated in real-time after each turn, based on the outcome of the moves.
+
+### Class Methods for Gameplay
+  - make_move(): Belongs to the Player class; used to make a move on the opponent's board.
+  - update_score(): Updates the player's score based on successful hits.
+  - has_won(): Evaluates the game board to check if a player has met the win condition.
+
+### Win Condition
+  - Determined by checking if all parts of the opponent's ships are hit.
+  - The method has_won() in the Player class is used for this evaluation.
+
+### User Interface
+  - Interactions are handled through the console with printed messages and input prompts.
+  - The GameBoard class provides a method to display the board state in a user-friendly format.
