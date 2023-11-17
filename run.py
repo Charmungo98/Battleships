@@ -38,12 +38,13 @@ def get_move(player_moves, board_size):
     while True:
         try:
             x, y = map(int, input("Enter coordinates (x y): ").split())
-            if (x, y) in player_moves:
+            x, y = x - 1, y - 1
+            if not (0 <= x < board_size and 0 <= y < board_size):
+                print(f"Invalid coordiantes. Please choose coordinates between 1 and {board_size}.")
+            elif (x, y) in player_moves:
                 print("You have already chosen these coordinates. Please try again.")
-            elif 0 <= x < board_size and 0 <= y < board_size:
-                return x, y
             else:
-                print(f"Invalid coordinates. Please choose coordiantes between 0 and 5")
+                return x, y
         except ValueError:
             print("Invalid input. Please enter two integers.")
         
@@ -87,11 +88,13 @@ def play_battleship(size=6, ships=4):
     place_ships(computer_board, ships)
     player_moves = set()
 
+    print("\n" + "-" * 20 + "\n")
     print("Welcome to Battleship!")
     print("Board size: 6. Ships: 4.")
     print("Ships are 2 co-ordinates long.")
     print("Co-ordinates start at 1 on both x and y axis")
     print("Hit all of your opponents boats to win the game.")
+    print("\n" + "-" * 20 + "\n")
     print("Your board:")
     print_board(player_board, reveal=True)
     print("\n" + "-" * 20 + "\n")
