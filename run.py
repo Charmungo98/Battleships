@@ -89,6 +89,7 @@ def computer_move(board):
 
 def play_battleship(size=6, ships=4):
     #Play the Battleship game
+    player_name = input("Enter your name: ")
     player_board = init_board(size)
     computer_board = init_board(size)
     player_tracking_board = init_board(size)
@@ -99,7 +100,7 @@ def play_battleship(size=6, ships=4):
     player_score, computer_score = 0, 0
 
     print("\n" + "-" * 20 + "\n")
-    print("Welcome to Battleship!")
+    print("Welcome to Battleship!".format(player_name))
     print("Board size: 6. Ships: 4.")
     print("Ships are 2 co-ordinates long.")
     print("Co-ordinates start at 1 on both axis at top left corner.")
@@ -110,7 +111,7 @@ def play_battleship(size=6, ships=4):
     print("\n" + "-" * 20 + "\n")
 
     while True:
-        print("\nYour turn!")
+        print("\nYour turn, {}!".format(player_name))
         x, y = get_move(player_moves, size)
         move_result = make_move(computer_board, player_tracking_board, x, y, player_moves)
         if move_result == "hit":
@@ -118,7 +119,7 @@ def play_battleship(size=6, ships=4):
         player_moves.add((x, y))
 
         if has_won(computer_board):
-            print("Congratulations. You win!")
+            print("Congratulations, {}! You win!".format(player_name))
             break
 
         print("\n" + "-" * 20 + "\n")
@@ -130,10 +131,10 @@ def play_battleship(size=6, ships=4):
             computer_score += 1
 
         if has_won(player_board):
-            print("Computer won!")
+            print("Sorry, {}! Computer won!".format(player_name))
             break
         
-        print("\nScores: Player - {}, Computer - {}".format(player_score, computer_score))
+        print("\nScores: {} - {}, Computer - {}".format(player_name, player_score, computer_score))  # Use player's name
         print("\n" + "-" * 20 + "\n")
         print("\nYour board:")
         print_board(player_board)
