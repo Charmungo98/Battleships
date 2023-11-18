@@ -29,6 +29,8 @@ Visit the deployed website [here](https://battleship-python98-c71c6949cf34.herok
 
 - The user enters their name before the game begins.
 
+- The user selects which size board they wish to choose. 
+
 - Players take turns to "fire" at the opponent's grid by guessing the coordinates.
 
 - The game asks for row and column numbers separately. Both coordinates start from 1, with 1,1 being the top left corner of the grid. After each guess, the game informs the player whether it was a hit or a miss.
@@ -53,6 +55,7 @@ Visit the deployed website [here](https://battleship-python98-c71c6949cf34.herok
   - Accepts user input for both coordinates.
   - Before the game begins players are prompted to enter their name, the game cannot start till a name or username is provided.
   - User able to select board size ranging from 3x3 to 7x7.
+  - The number of ships will vary depending on the size of board (max ships = board size -2)
   - Once a name is provided, the game will address the user as the name provided.
 
 ![name-input](pictures/name-board-input.jpg)

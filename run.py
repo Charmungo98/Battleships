@@ -164,7 +164,7 @@ def play_battleship(size=6, ships=4):
         except ValueError:
             print("Invalid input. Please enter a number.")
 
-    ships = max(2, size - 3)
+    ships = max(2, size - 2)
 
     player_board = init_board(size)
     computer_board = init_board(size)
