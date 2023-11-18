@@ -52,9 +52,10 @@ Visit the deployed website [here](https://battleship-python98-c71c6949cf34.herok
 #### User entry
   - Accepts user input for both coordinates.
   - Before the game begins players are prompted to enter their name, the game cannot start till a name or username is provided.
+  - User able to select board size ranging from 3x3 to 7x7.
   - Once a name is provided, the game will address the user as the name provided.
 
-![name-input](https://github.com/Charmungo98/Battleships/assets/138699715/1bddc89a-69cb-45df-9b7d-e219aa6e904e)
+![name-input](pictures/name-board-input.jpg)
 
 #### Random generation 
   - Ships locations are randomly generated for both the player and the cpu.
@@ -78,7 +79,6 @@ Visit the deployed website [here](https://battleship-python98-c71c6949cf34.herok
 #### Simple and user-friendly console-based interface. 
 
 ### Future Features
-  - The user will be able to select the size of the board they wish to use.
   - The user will be able to select the number of ships used on each board and the length of the ships.
   - The user will be able to choose the location of their own ships.
   - The CPU will be able to recognise pattern and use strategic thought to calculate its coordinates. 
