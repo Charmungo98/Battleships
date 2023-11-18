@@ -163,6 +163,9 @@ def play_battleship(size=6, ships=4):
                 print("Invalid size. Please choose a size between 3 and 7.")
         except ValueError:
             print("Invalid input. Please enter a number.")
+
+    ships = max(2, size - 3)
+
     player_board = init_board(size)
     computer_board = init_board(size)
     player_tracking_board = init_board(size)
@@ -175,7 +178,7 @@ def play_battleship(size=6, ships=4):
     # Print game instructions and board
     print("\n" + "-" * 20 + "\n")
     print("Welcome to Battleship, {}!".format(player_name))
-    print("Board size: 6. Ships: 4.")
+    print(f"Board size: {size}. Ships: {ships}.")
     print("Ships are 2 co-ordinates long.")
     print("Co-ordinates start at 1 on both axis at top left corner.")
     print("Hit all of your opponents boats to win the game.")
