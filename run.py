@@ -80,7 +80,7 @@ def get_move(player_moves, board_size):
             # Validate input: within range and not previously chosen
             if not (0 <= x < board_size and 0 <= y < board_size):
                 print("Invalid coordiantes.")
-                print("Please choose coordinates between 1 and 6.")
+                print(f"Please choose coordinates between 1 and {board_size}.")
             elif (x, y) in player_moves:
                 print("Coordinates previously chosen, please try again.")
             else:
@@ -154,6 +154,15 @@ def play_battleship(size=6, ships=4):
     ships (int): The number of ships to be placed on each board.
     """
     player_name = input("Enter your name: ")
+    while True:
+        try:
+            size = int(input("Enter board size (3 to 7): "))
+            if 3 <= size <= 7:
+                break
+            else:
+                print("Invalid size. Please choose a size between 3 and 7.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
     player_board = init_board(size)
     computer_board = init_board(size)
     player_tracking_board = init_board(size)
