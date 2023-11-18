@@ -54,9 +54,9 @@ Visit the deployed website [here](https://battleship-python98-c71c6949cf34.herok
 #### User entry
   - Accepts user input for both coordinates.
   - Before the game begins players are prompted to enter their name, the game cannot start till a name or username is provided.
+  - Once a name is provided, the game will address the user as the name provided.
   - User able to select board size ranging from 3x3 to 7x7.
   - The number of ships will vary depending on the size of board (max ships = board size -2)
-  - Once a name is provided, the game will address the user as the name provided.
 
 ![name-input](pictures/name-board-input.jpg)
 
