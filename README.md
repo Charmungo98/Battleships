@@ -77,6 +77,7 @@ Visit the deployed website [here](https://battleship-python98-c71c6949cf34.herok
   - Upon succession of hitting all opponents ships, a winner is declared.
 
 ![score](https://github.com/Charmungo98/Battleships/assets/138699715/974878c6-dad3-49f4-8abc-b29b33aefec7)
+
 ![winner](pictures/winner.jpg)
 
 #### Simple and user-friendly console-based interface. 
