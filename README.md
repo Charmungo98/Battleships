@@ -63,11 +63,11 @@ Visit the deployed website [here](https://battleship-python98-c71c6949cf34.herok
 #### Random generation 
   - Ships locations are randomly generated for both the player and the cpu.
   - Player cannot see where ships of cpu are located until they are hit.
-  - CPU coordinares are random. 
+  - CPU coordinates are random. 
 
 #### Interactive coordinate input with validation to prevent out-of-bound guesses.
   - You cannot enter coordinates that are outside of the scope of the board.
-  - Only intergers can be entered as coordinate answers
+  - Only integers can be entered as coordinate answers
   - The same coordinates cannot be entered twice, the game will provide them with another attempt to provide new coordinates.
 
 ![wrong-input](https://github.com/Charmungo98/Battleships/assets/138699715/2cd3b56e-911e-4c6f-897a-1e70147a6b59)
@@ -85,7 +85,7 @@ Visit the deployed website [here](https://battleship-python98-c71c6949cf34.herok
 ### Future Features
   - The user will be able to select the number of ships used on each board and the length of the ships.
   - The user will be able to choose the location of their own ships.
-  - The CPU will be able to recognise pattern and use strategic thought to calculate its coordinates. 
+  - The CPU will be able to recognise patterns and use strategic thought to calculate its coordinates. 
 
 
 # 3. Data Model 
@@ -137,19 +137,19 @@ Visit the deployed website [here](https://battleship-python98-c71c6949cf34.herok
 
   #### I have manually tested this project by doing the following;
   - Passed the code through a PEP8 linter (flake8) and confirmed there are no issues with the code.
-  - Provided invalid inputs such as; out of bound coordinates, strings where intergers where expected, same input twice - no issues occured.
-  - Tested the game thoroughly in hte local terminal and Code Institute Heroku terminal
+  - Provided invalid inputs such as; out of bound coordinates, strings where integers where expected, same input twice - no issues occurred.
+  - Tested the game thoroughly in the local terminal and Code Institute Heroku terminal
 
 ### Bugs Encountered and Resolutions
 
   #### Overview
   - During the development and refinement of the Battleship game, several bugs and issues were identified and subsequently resolved. This process was crucial in ensuring a smooth, user-friendly, and reliable gaming experience. Below are some of the key issues encountered and the strategies employed to fix them.
 
-  #### Coordiante System Confusion 
+  #### Coordinate System Confusion 
   - Issue: Initially, the game used a 0-based indexing system for coordinates, which was not intuitive for most players.
   - Resolution: The coordinate system was shifted to a 1-based indexing system. The get_move function was modified to subtract 1 from the player's input, aligning the user interface with a more natural coordinate system starting from 1.
 
-  #### Board Boundarys Checks for Ship Placement
+  #### Board Boundaries Checks for Ship Placement
   - Issue: There was a potential for ships to overflow the board's boundaries when being placed randomly.
   - Resolution: The ship placement logic in the place_ships function was adjusted to ensure that the ships, when placed either horizontally or vertically, would not exceed the board's limits. This was achieved by adding boundary checks before placing each ship.
 
@@ -183,5 +183,5 @@ Visit the deployed website [here](https://battleship-python98-c71c6949cf34.herok
   - Click on Deploy
 
 # 6. Credits
-  - Code institure for the deployment terminal
+  - Code institute for the deployment terminal
   - My friends, for keeping me sane when trying to wrap my head around this interesting unit. 
