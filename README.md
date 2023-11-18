@@ -17,9 +17,9 @@ Visit the deployed website [here](https://battleship-python98-c71c6949cf34.herok
 
 - At the start of the game, players enter their name for a personalized experience.
 
-- The game board is a 6x6 grid.
+- The game board is a grid of 3x3 up to 7x7, board size is chosen by the user at the start of the game.
 
-- Each player, the user and the computer, secretly places 4 ships on their board. Each ship occupies 2 consecutive cells on the grid.
+- Each player, the user and the computer, secretly places ships (the number of ships ranges depending on the size of the board chosen) on their board. Each ship occupies 2 consecutive cells on the grid.
 
 - The ships can be placed either horizontally or vertically, and their placement is random and hidden from the opponent.
 
@@ -96,7 +96,7 @@ Visit the deployed website [here](https://battleship-python98-c71c6949cf34.herok
 
 ### Classes and Their Responsibilities
 #### GameBoard Class: Represents the game board.
-  - Each instance of this class represents a 6x6 grid.
+  - Each instance of this class represents a 3x3 to 7x7 grid.
   - Methods include initializing the board, placing ships, and displaying the board.
 
 #### Ship Class: Represents the ships on the board.
